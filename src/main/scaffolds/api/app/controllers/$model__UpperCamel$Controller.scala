@@ -10,10 +10,10 @@ import models.$model;format="UpperCamel"$
 // NOTE: Add the following to conf/routes to enable compilation of this class:
 /*
 GET       /$model;format="lower,hyphen"$          controllers.$model;format="UpperCamel"$Controller.index
-GET       /$model;format="lower,hyphen"$:$model;format="lowerCamel"$Id          controllers.$model;format="UpperCamel"$Controller.show($model;format="lowerCamel"$Id:Int)
+GET       /$model;format="lower,hyphen"$/:$model;format="lowerCamel"$Id          controllers.$model;format="UpperCamel"$Controller.show($model;format="lowerCamel"$Id:Int)
 POST      /$model;format="lower,hyphen"$          controllers.$model;format="UpperCamel"$Controller.store
-PUT       /$model;format="lower,hyphen"$:$model;format="lowerCamel"$Id          controllers.$model;format="UpperCamel"$Controller.update($model;format="lowerCamel"$Id:Int)
-DELETE    /$model;format="lower,hyphen"$:$model;format="lowerCamel"$Id          controllers.$model;format="UpperCamel"$Controller.delete($model;format="lowerCamel"$Id:Int)
+PUT       /$model;format="lower,hyphen"$/:$model;format="lowerCamel"$Id          controllers.$model;format="UpperCamel"$Controller.update($model;format="lowerCamel"$Id:Int)
+DELETE    /$model;format="lower,hyphen"$/:$model;format="lowerCamel"$Id          controllers.$model;format="UpperCamel"$Controller.delete($model;format="lowerCamel"$Id:Int)
 */
 
 /**
