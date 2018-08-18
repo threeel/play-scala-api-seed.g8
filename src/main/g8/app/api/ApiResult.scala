@@ -1,13 +1,12 @@
-package http
+package http.api
 
-import ApiResponse._
-import ApiError._
-//import models.ApiLog
-import play.api.mvc.Results._
-import play.api.mvc.{ Result, RequestHeader }
-import play.api.libs.json._
-import play.api.libs.json.Json._
 import play.api.i18n.Lang
+import play.api.libs.json._
+import play.api.mvc.Results.{Accepted, BadRequest, Created, Forbidden, InternalServerError, NoContent, NotFound, Ok, Unauthorized}
+import play.api.mvc.{RequestHeader, Result}
+import ApiError._
+import ApiResponse._
+
 
 /*
 * The result of an ApiRequest.

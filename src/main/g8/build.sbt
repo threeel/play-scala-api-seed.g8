@@ -4,7 +4,6 @@ import scala.sys.process.Process
 lazy val projectDependencies = Seq(
   guice,
   "org.joda" % "joda-convert" % "1.9.2",
-  "net.logstash.logback" % "logstash-logback-encoder" % "4.11",
   "io.lemonlabs" %% "scala-uri" % "1.1.5",
   "net.codingwell" %% "scala-guice" % "4.1.1",
   "com.mohiva" %% "play-silhouette" % "5.0.5",

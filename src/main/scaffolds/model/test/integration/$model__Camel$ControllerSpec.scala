@@ -1,4 +1,4 @@
-package controllers
+package integration
 
 import akka.actor.ActorSystem
 import akka.stream.ActorMaterializer
@@ -17,7 +17,7 @@ import scala.concurrent.ExecutionContext
 /**
  * $model;format="Camel"$ form controller specs
  */
-class $model;format="UpperCamel"$ControllerSpec extends PlaySpec with GuiceOneAppPerTest with Injecting {
+class $model;format="Camel"$ControllerSpec extends PlaySpec with GuiceOneAppPerTest with Injecting {
   implicit val system: ActorSystem = ActorSystem()
   implicit val materializer: ActorMaterializer = ActorMaterializer()
   // Provide stubs for components based off Helpers.stubControllerComponents()
@@ -31,10 +31,10 @@ class $model;format="UpperCamel"$ControllerSpec extends PlaySpec with GuiceOneAp
     override val messagesActionBuilder: MessagesActionBuilder = new DefaultMessagesActionBuilderImpl(parsers.default, messagesApi)(executionContext)
   }
 
-  "$model;format="UpperCamel"$Controller GET" should {
+  "$model;format="Camel"$Controller GET" should {
 
     "render the index page from a new instance of controller" in {
-      val controller = new $model;format="UpperCamel"$Controller(new StubComponents())
+      val controller = new $model;format="Camel"$Controller(new StubComponents())
       val request = FakeRequest().withCSRFToken
       val home = controller.index.apply(request)
 
@@ -43,7 +43,7 @@ class $model;format="UpperCamel"$ControllerSpec extends PlaySpec with GuiceOneAp
     }
 
     "render the index page from the application" in {
-      val controller = inject[$model;format="UpperCamel"$Controller]
+      val controller = inject[$model;format="Camel"$Controller]
       val request = FakeRequest().withCSRFToken
       val home = controller.index.apply(request)
 
@@ -60,7 +60,7 @@ class $model;format="UpperCamel"$ControllerSpec extends PlaySpec with GuiceOneAp
     }
   }
 
-  "$model;format="UpperCamel"$Controller POST" should {
+  "$model;format="Camel"$Controller POST" should {
     "process form" in {
       val request = {
         FakeRequest(POST, "/$model;format="normalize"$").withJsonBody(Json.obj("name"->"value"))

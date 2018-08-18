@@ -1,4 +1,4 @@
-package http
+package http.api
 
 import play.api.libs.json._
 import play.api.data.validation.ValidationError

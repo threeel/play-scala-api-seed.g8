@@ -1,7 +1,8 @@
-package http
+package http.api
 
-import Api._
+import http.api.Api._
 import play.api.libs.json._
+import JsonCombinators._
 
 /*
 * Successful response for an ApiRequest.

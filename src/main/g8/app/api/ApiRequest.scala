@@ -1,6 +1,6 @@
-package http
+package http.api
 
-import http.Api._
+import http.api.Api._
 import org.joda.time.DateTime
 import play.api.i18n.{Lang, MessagesImpl, MessagesProvider}
 import play.api.libs.json._

@@ -1,12 +1,12 @@
-package http
+package http.api
 
-import java.util.Date
 import java.text.SimpleDateFormat
+import java.util.{Date, Locale}
+
 import org.joda.time.DateTime
 import org.joda.time.format.DateTimeFormat
-import java.util.Locale
 import play.api.i18n.Lang
-import play.api.mvc.{ Call, RequestHeader }
+import play.api.mvc.{Call, RequestHeader}
 
 /*
 * Set of general values and methods for the API
