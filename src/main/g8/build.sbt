@@ -15,6 +15,17 @@ lazy val projectDependencies = Seq(
   specs2 % Test
 )
 
+lazy val daoDependencies = Seq(
+  "com.typesafe.slick" %% "slick" % "3.2.3",
+  "io.strongtyped" %% "active-slick" % "0.3.5",
+  "com.typesafe.play" %% "play-slick" % "3.0.1",
+  "com.typesafe.slick" %% "slick-codegen" % "3.2.3",
+  "com.github.tototoshi" %% "slick-joda-mapper" % "2.3.0",
+  "org.joda" % "joda-convert" % "2.1.1",
+  "org.postgresql" % "postgresql" % "9.4-1206-jdbc42",
+  "com.h2database" % "h2" % "1.4.197" % Test
+)
+
 def evictionSettings: Seq[Setting[_]] = Seq(
   evictionWarningOptions in update := EvictionWarningOptions.default
     .withWarnTransitiveEvictions(false)
@@ -62,7 +73,7 @@ def common: Seq[Setting[_]] = evictionSettings ++ Seq(
 lazy val root = (project in file("."))
   .settings(
   name := "$name$",
-  libraryDependencies ++= projectDependencies,
+  libraryDependencies ++= projectDependencies ++ daoDependencies,
   dependencyOverrides ++= Seq(
     //      Seq for SBT 1.0.x Example
     //      "com.typesafe.akka" %% "akka-actor" % akkaVersion,
