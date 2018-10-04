@@ -1,7 +1,12 @@
 package http.controllers
 
-import data.models.$model;format="Camel"$
+import http.api.ApiController
+import javax.inject.Inject
+import play.api.i18n.I18nSupport
+import play.api.libs.json.JsValue
+import play.api.mvc.{AbstractController, Action, ControllerComponents}
 
+import data.models.$model;format="Camel"$
 // NOTE: Add the following to conf/routes to enable compilation of this class:
 /*
 GET       /$model;format="lower,hyphen"$                                  http.controllers.$model;format="Camel"$Controller.index
