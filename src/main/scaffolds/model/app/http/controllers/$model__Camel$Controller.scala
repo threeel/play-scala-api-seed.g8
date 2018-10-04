@@ -1,7 +1,6 @@
 package http.controllers
 
-;
-format = "Camel" $
+import data.models.$model;format="Camel"$
 
 // NOTE: Add the following to conf/routes to enable compilation of this class:
 /*
@@ -16,16 +15,14 @@ DELETE    /$model;format="lower,hyphen"$/:$model;format="camel"$Id        http.c
   *
   * $model;format="Camel"$ api controller for Play Scala
   */
-class $model;
-format = "Camel" $Controller@Inject () (cc: ControllerComponents) extends AbstractController (cc) with ApiController with I18nSupport {
+class $model;format = "Camel" $Controller@Inject () (cc: ControllerComponents) extends AbstractController (cc) with ApiController with I18nSupport {
 
   /**
     * Get a Collection of $model;format="Camel"$
     *
     * @return
     */
-  def index: Action[Unit] = ApiAction {
-  implicit request: ApiRequest[Unit] =>
+  def index: Action[Unit] = ApiAction { implicit request =>
   ok ("Paging OK")
 }
 
@@ -34,11 +31,8 @@ format = "Camel" $Controller@Inject () (cc: ControllerComponents) extends Abstra
     *
     * @return
     */
-  def store: Action[JsValue] = ApiActionWithBody {
-  implicit request =>
-  readFromRequest[$model;
-  format = "Camel" $] {
-  form =>
+  def store: Action[JsValue] = ApiActionWithBody {implicit request =>
+  readFromRequest[$model;format = "Camel" $] {form =>
   // handle form
   created ()
 }
@@ -50,8 +44,7 @@ format = "Camel" $Controller@Inject () (cc: ControllerComponents) extends Abstra
     * @return
     */
   def show ($model;
-  format = "camel" $Id: Int): Action[Unit] = ApiAction {
-  implicit request =>
+  format = "camel" $Id: Int): Action[Unit] = ApiAction {implicit request =>
 
   ok ("OK")
 }
@@ -61,12 +54,8 @@ format = "Camel" $Controller@Inject () (cc: ControllerComponents) extends Abstra
     *
     * @return
     */
-  def update ($model;
-  format = "camel" $Id: Int): Action[JsValue] = ApiActionWithBody {
-  implicit request =>
-  readFromRequest[$model;
-  format = "Camel" $] {
-  form =>
+  def update ($model;format = "camel" $Id: Int): Action[JsValue] = ApiActionWithBody {implicit request =>
+  readFromRequest[$model;format = "Camel" $] { form =>
   // handle form
   maybeItem (Some ("OK") )
 }
@@ -78,9 +67,7 @@ format = "Camel" $Controller@Inject () (cc: ControllerComponents) extends Abstra
     *
     * @return
     */
-  def delete ($model;
-  format = "camel" $Id: Int): Action[JsValue] = ApiActionWithBody {
-  implicit request =>
+  def delete ($model;format = "camel" $Id: Int): Action[JsValue] = ApiActionWithBody { implicit request =>
 
   maybeItem (Some ("OK") )
 }
