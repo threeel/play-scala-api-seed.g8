@@ -20,7 +20,7 @@ DELETE    /$model;format="lower,hyphen"$/:$model;format="camel"$Id        http.c
   *
   * $model;format="Camel"$ api controller for Play Scala
   */
-class $model;format = "Camel" $Controller@Inject () (cc: ControllerComponents) extends AbstractController (cc) with ApiController with I18nSupport {
+class $model;format="Camel"$Controller@Inject () (cc: ControllerComponents) extends AbstractController (cc) with ApiController with I18nSupport {
 
   /**
     * Get a Collection of $model;format="Camel"$
@@ -37,7 +37,7 @@ class $model;format = "Camel" $Controller@Inject () (cc: ControllerComponents) e
     * @return
     */
   def store: Action[JsValue] = ApiActionWithBody {implicit request =>
-  readFromRequest[$model;format = "Camel" $] {form =>
+  readFromRequest[$model;format="Camel"$] {form =>
   // handle form
   created ()
 }
@@ -48,8 +48,7 @@ class $model;format = "Camel" $Controller@Inject () (cc: ControllerComponents) e
     *
     * @return
     */
-  def show ($model;
-  format = "camel" $Id: Int): Action[Unit] = ApiAction {implicit request =>
+  def show ($model;format="camel"$Id: Int): Action[Unit] = ApiAction {implicit request =>
 
   ok ("OK")
 }
@@ -59,8 +58,8 @@ class $model;format = "Camel" $Controller@Inject () (cc: ControllerComponents) e
     *
     * @return
     */
-  def update ($model;format = "camel" $Id: Int): Action[JsValue] = ApiActionWithBody {implicit request =>
-  readFromRequest[$model;format = "Camel" $] { form =>
+  def update ($model;format="camel"$Id: Int): Action[JsValue] = ApiActionWithBody {implicit request =>
+  readFromRequest[$model;format="Camel" $] { form =>
   // handle form
   maybeItem (Some ("OK") )
 }
@@ -72,9 +71,9 @@ class $model;format = "Camel" $Controller@Inject () (cc: ControllerComponents) e
     *
     * @return
     */
-  def delete ($model;format = "camel" $Id: Int): Action[JsValue] = ApiActionWithBody { implicit request =>
+  def delete ($model;format="camel"$Id:Int): Action[JsValue] = ApiActionWithBody { implicit request =>
 
   maybeItem (Some ("OK") )
-}
+  }
 
 }

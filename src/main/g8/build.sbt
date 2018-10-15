@@ -6,6 +6,7 @@ lazy val projectDependencies = Seq(
   "org.joda" % "joda-convert" % "1.9.2",
   "io.lemonlabs" %% "scala-uri" % "1.1.5",
   "net.codingwell" %% "scala-guice" % "4.1.1",
+  "net.logstash.logback" % "logstash-logback-encoder" % "5.2",
   "com.mohiva" %% "play-silhouette" % "5.0.5",
   "com.mohiva" %% "play-silhouette-password-bcrypt" % "5.0.5",
   "com.mohiva" %% "play-silhouette-persistence" % "5.0.5",
