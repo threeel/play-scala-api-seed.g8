@@ -1,4 +1,5 @@
 package data.models
+import play.api.libs.json.{Json, OFormat}
 
 object User {
   implicit val jsonFormat: OFormat[User] = Json.format[User]
