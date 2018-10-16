@@ -8,6 +8,8 @@ lazy val projectDependencies = Seq(
   "net.codingwell" %% "scala-guice" % "4.1.1",
   "net.logstash.logback" % "logstash-logback-encoder" % "5.2",
   "com.mohiva" %% "play-silhouette" % "5.0.5",
+  "com.nulab-inc" %% "scala-oauth2-core" % "1.3.0",
+  "com.nulab-inc" %% "play2-oauth2-provider" % "1.3.0",
   "com.mohiva" %% "play-silhouette-password-bcrypt" % "5.0.5",
   "com.mohiva" %% "play-silhouette-persistence" % "5.0.5",
   "com.mohiva" %% "play-silhouette-crypto-jca" % "5.0.5",
