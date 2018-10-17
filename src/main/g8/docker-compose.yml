@@ -1,0 +1,24 @@
+version: '3'
+services:
+  migrations:
+    image: boxfuse/flyway
+    command: -url=jdbc:postgresql://$APP_DB_HOST/$APP_DB_NAME -schemas=$APP_DB_SCHEMA -user=$APP_DB_USER -password=$APP_DB_PASSWORD migrate
+    environment:
+    - APP_DB_HOST=db
+    - APP_DB_USER=postgres
+    - APP_DB_PASSWORD=password
+    - APP_DB_SCHEMA=public
+    - APP_DB_NAME=devdb
+    volumes:
+    - .conf/db/migrations:/flyway/sql
+    depends_on:
+    - db
+  db:
+    image: postgres
+    restart: always
+    environment:
+    - POSTGRES_USER=postgres
+    - POSTGRES_PASSWORD=password
+    - POSTGRES_DB=devdb
+    ports:
+    - "0.0.0.0:5432:5432"
