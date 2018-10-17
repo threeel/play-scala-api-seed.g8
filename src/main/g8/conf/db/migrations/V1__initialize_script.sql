@@ -290,13 +290,6 @@ CREATE UNIQUE INDEX users_id_uindex ON public.users USING btree (id);
 
 
 --
--- Name: users_sip_extension_sip_domain_uindex; Type: INDEX; Schema: public; Owner: postgres
---
-
-CREATE UNIQUE INDEX users_sip_extension_sip_domain_uindex ON public.users USING btree (sip_extension, sip_domain);
-
-
---
 -- Name: users insert_timestamps; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
