@@ -8,6 +8,8 @@ import org.joda.time.format.DateTimeFormat
 import play.api.i18n.Lang
 import play.api.mvc.{Call, RequestHeader}
 
+import scala.util.Try
+
 /*
 * Set of general values and methods for the API
 */
@@ -40,6 +42,13 @@ object Api {
   //////////////////////////////////////////////////////////////////////
   // Date and joda.DateTime utils
 
+  def parseHeaderPage(pageStr: String): Int = {
+    if (pageStr.length > 0) {
+      Try(pageStr.toInt).getOrElse(0)
+    } else {
+      0
+    }
+  }
   private final val longDateTimeFormatter = DateTimeFormat.forPattern("E, dd MMM yyyy HH:mm:ss 'GMT'").withLocale(Locale.ENGLISH).withZoneUTC()
   def parseHeaderDate(dateStr: String): DateTime = longDateTimeFormatter.parseDateTime(dateStr)
   def printHeaderDate(date: DateTime): String = longDateTimeFormatter.print(date)

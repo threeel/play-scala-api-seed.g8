@@ -1,11 +1,11 @@
 package http.api
 
-import http.api.Api._
+import http.api.Paging.PageRequest
 import org.joda.time.DateTime
 import play.api.i18n.{Lang, MessagesImpl, MessagesProvider}
-import play.api.libs.json._
-import play.api.mvc._
-
+import play.api.libs.json.{JsValue, Json}
+import play.api.mvc.{Request, RequestHeader, WrappedRequest}
+import http.api.Api._
 import scala.util.Try
 
 /*
@@ -20,6 +20,7 @@ trait ApiRequestHeader[R <: RequestHeader] {
 
   val dateOpt: Option[DateTime] = dateOptTry.filter(_.isSuccess).map(_.get)
   val tokenOpt: Option[String] = request.headers.get(HEADER_AUTH_TOKEN)
+  val requestedDomain: String = request.headers.get("X-DOMAIN").getOrElse(request.domain)
 
   def dateOrNow: DateTime = dateOpt.getOrElse(new DateTime())
 
@@ -28,6 +29,24 @@ trait ApiRequestHeader[R <: RequestHeader] {
 
   //  def uri: String = request.uri
   def maybeBody: Option[String] = None
+
+  def requestUri: String = request.uri
+
+  private def extractPagingAndFilters: PageRequest = {
+    val page: String = request.headers.get(HEADER_PAGE).getOrElse(
+      parameters.getOrElse("page", "1")
+    )
+    val pageSize: String = request.headers.get(HEADER_PAGE_SIZE).getOrElse(
+      parameters.getOrElse("size", "25")
+    )
+
+    PageRequest(parseHeaderPage(page), parseHeaderPage(pageSize), filters = modelFilters)
+  }
+
+
+  def modelFilters: Seq[ModelFilter] = ModelFilter.fromRequest(parameters, requestedDomain)
+
+  def parameters: Map[String, String] = request.queryString.map { case (k, v) => k -> v.mkString }
 }
 
 case class ApiRequestHeaderImpl(request: RequestHeader) extends ApiRequestHeader[RequestHeader]
