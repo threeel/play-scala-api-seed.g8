@@ -1,5 +1,9 @@
 
+import com.typesafe.sbt.{GitBranchPrompt, GitVersioning}
+import com.typesafe.sbt.SbtNativePackager.autoImport.maintainer
+
 import scala.sys.process.Process
+
 
 lazy val projectDependencies = Seq(
   guice,
@@ -43,7 +47,11 @@ def common: Seq[Setting[_]] = evictionSettings ++ Seq(
   scalaVersion := "2.12.6",
   licenses := Seq(("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0.html"))),
   homepage := Some(url("$organization_url$")),
-
+  resolvers += "scalaz-bintray" at "https://dl.bintray.com/scalaz/releases",
+  resolvers += "Akka Snapshot Repository" at "http://repo.akka.io/snapshots/",
+  // No Documentation on sbt:dist
+  sources in(Compile, doc) := Seq.empty,
+  publishArtifact in(Compile, packageDoc) := false,
   resolvers += Resolver.url("typesafe", url("http://repo.typesafe.com/typesafe/ivy-releases/"))(Resolver.ivyStylePatterns),
   resolvers += "Sonatype snapshots" at "https://oss.sonatype.org/content/repositories/snapshots/",
   resolvers += Resolver.JCenterRepository,
@@ -88,4 +96,6 @@ lazy val root = (project in file("."))
     //      "org.slf4j" % "slf4j-api" % "1.7.25"
   )
 ).settings(common)
-  .enablePlugins(PlayScala)
+  .enablePlugins(PlayScala, JavaServerAppPackaging, DockerPlugin, GitVersioning, AshScriptPlugin, GitBranchPrompt)
+  .configure(ApplicationVersionSettings.get)
+  .configure(DockerConfigSettings.get)
